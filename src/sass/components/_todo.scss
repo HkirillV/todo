@@ -1,0 +1,38 @@
+.todo {
+  display: grid;
+  text-align: center;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.task {
+  padding: 40px;
+  border-radius: 8px;
+  background-color: $color-white;
+
+
+}
+
+.todo__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+
+}
+
+
+.plus {
+  color: $color-cornflowerblue;
+  transition: all 0.5s;
+
+  @include font($size: 10rem, $height: normal, $weight: 400)
+
+}
+
+.plus:hover {
+  transform: rotate(-45deg);
+}

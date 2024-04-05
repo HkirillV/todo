@@ -1,13 +1,60 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/src/sass/style.css">
+  <title>TODO | Главная</title>
+</head>
+<body>
+<header class="header container">
+  <div class="navigation">
+    <h1 class="navigation__title">Todo</h1>
+  </div>
+</header>
+<main class="container">
+  <section class="todo">
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Fitness</h4>
+      <span class="task__count">4</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Work</h4>
+      <span class="task__count">11</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Learning</h4>
+      <span class="task__count">8</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Dinner</h4>
+      <span class="task__count">4</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Movie</h4>
+      <span class="task__count">10</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Shopping</h4>
+      <span class="task__count">5</span>
+    </div>
+    <div class="task">
+      <img class="task__image" src="" alt="">
+      <h4 class="task__title">Design</h4>
+      <p class="task__count">0</p>
+    </div>
+    <div class="todo__add">
+      <span class="plus">+</span>
+    </div>
+  </section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
 </html>
