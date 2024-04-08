@@ -65,6 +65,15 @@ li {
   list-style-type: none;
 }
 
+button {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
 .container {
   max-width: 600px;
   width: 100%;
@@ -86,12 +95,13 @@ li {
   line-height: normal;
 }
 
-.todo {
+.todo-list {
   display: grid;
   text-align: center;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+  margin-bottom: 20px;
 }
 
 .task {
@@ -99,14 +109,17 @@ li {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  position: relative;
   row-gap: 10px;
   padding: 40px;
   border-radius: 8px;
   background-color: #FFFFFF;
+  transition: 0.5s;
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 .task__title {
   color: #000000;
-  opacity: 0.7;
   font-size: 2rem;
   font-style: normal;
   font-weight: 900;
@@ -114,33 +127,64 @@ li {
 }
 .task__count {
   color: #000000;
-  opacity: 0.7;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-
-.todo__add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background-color: white;
+.task__delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
   cursor: pointer;
+  background-color: #FFFFFF;
+}
+.task__delete-icon:hover {
+  fill: red;
 }
 
-.plus {
-  color: #6495ED;
-  transition: all 0.5s;
-  font-size: 10rem;
+.task:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.create-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  background-color: white;
+  padding: 40px;
+  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+.create-section__image {
+  color: #000000;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-
-.plus:hover {
-  transform: rotate(-45deg);
+.create-section__title {
+  height: 40px;
+  border-radius: 4px;
+  color: #000000;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.create-section__button {
+  padding-inline: 25px;
+  height: 48px;
+  border-radius: 4px;
+  border: none;
+  background-color: #6495ED;
+  color: #000000;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 /*# sourceMappingURL=style.css.map */

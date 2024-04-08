@@ -53,3 +53,12 @@ p {
 li {
   list-style-type: none;
 }
+
+button {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
