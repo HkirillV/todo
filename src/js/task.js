@@ -1,58 +1,38 @@
-import {getLocalStorage, setLocalStorage} from "./function.js";
+import {getLocalStorage, setLocalStorage, taskAPI} from "./function.js";
 
 const todoAddElement = document.querySelector('.todo__add')
 const todoListElement = document.querySelector('.todo-list')
 
+let taskElement = []
 
-let task = []
+taskAPI.getTask()
+  .then(data => {
 
-getTask()
+    checkingRelevanceTask(data)
 
-todoAddElement.addEventListener('click', renderTask)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 
-async function getTask() {
-  try {
-    if (!task.length) {
-      const res = await fetch('/db/task.json')
-      if (!res.ok) {
-        throw new Error(res.statusText)
-      }
-      task = await res.json()
-
-    }
-    checkingRelevanceTask()
-
-  } catch (err) {
-    console.log('ошибка')
-  }
-}
-
-
-function checkingRelevanceTask() {
-  if (!task.length) {
+const checkingRelevanceTask = (data) => {
+  if (!data.length) {
     console.log('todo list пустой')
   }
 
-  setLocalStorage(task)
+  setLocalStorage(data)
 
   const newTask = getLocalStorage('task')
 
   renderTask(newTask)
 }
 
-// function deleteTask (event) {
-//
-// }
-
-
-function renderTask(arr) {
-
-  todoListElement.innerHTML = ''
+const renderTask = (arr) => {
 
   todoListElement.innerHTML = arr.reduce((acc, el) => {
     const {id, title, img, tasks} = el
     task = `
-      <div class="task" data-task="${id}">
+      <div class="task" data-id="${id}">
       <img class="task__image" src="/src/img/${img}" width="70" height="70" loading="lazy" alt="work">
       <h4 class="task__title">${title}</h4>
       <span class="task__count">Tasks ${tasks}</span>
@@ -61,7 +41,47 @@ function renderTask(arr) {
       </button>
     </div>
       `
+
     return acc + task
   }, '')
-
 }
+
+
+const clickTaskDeleteButton = async (event) => {
+
+  const taskDelete = event.target.closest('.task__delete')
+
+  if (!taskDelete) {
+    return
+  }
+
+  const task = taskDelete.closest('.task')
+
+  const id = task.dataset.id
+
+  taskAPI.deleteTask(id)
+    .then(data => {
+
+      checkingRelevanceTask(data)
+
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+todoListElement.addEventListener('click', clickTaskDeleteButton)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

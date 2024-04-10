@@ -54,11 +54,15 @@ li {
   list-style-type: none;
 }
 
-button {
+button, label {
   transition: 0.3s;
   cursor: pointer;
 }
 
 button:hover {
+  opacity: 0.8;
+}
+
+label:hover {
   opacity: 0.8;
 }

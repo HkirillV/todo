@@ -22,14 +22,13 @@
 
     </div>
     <div class="create-section">
-      <form>
-        <input class="create-section__image" type="file">
-        <input class="create-section__title" type="text" placeholder="название">
-      </form>
-      <button class="create-section__button" type="submit">Добавить</button>
+      <input class="create-section__input-file" type="file" id="file-input">
+      <label class="create-section__label-file" for="file-input">Upload File</label>
+      <input class="create-section__input-title" type="text" placeholder="Title">
+      <button class="create-section__button" type="submit">Add</button>
     </div>
   </section>
 </main>
-<script type="module" src="app.js"></script>
+<script type="module" src="index.js" defer></script>
 </body>
 </html>
