@@ -1,37 +1,17 @@
-import {getLocalStorage, setLocalStorage, taskAPI} from "./function.js";
+import {setCacheToTask, getCacheToTask, taskAPI} from "./function.js";
 
 const todoAddElement = document.querySelector('.todo__add')
 const todoListElement = document.querySelector('.todo-list')
 
-let taskElement = []
+let task =
 
-taskAPI.getTask()
-  .then(data => {
 
-    checkingRelevanceTask(data)
-
-  })
-  .catch(err => {
-    console.log(err)
-  })
-
-const checkingRelevanceTask = (data) => {
-  if (!data.length) {
-    console.log('todo list пустой')
-  }
-
-  setLocalStorage(data)
-
-  const newTask = getLocalStorage('task')
-
-  renderTask(newTask)
-}
 
 const renderTask = (arr) => {
 
   todoListElement.innerHTML = arr.reduce((acc, el) => {
     const {id, title, img, tasks} = el
-    task = `
+    const task = `
       <div class="task" data-id="${id}">
       <img class="task__image" src="/src/img/${img}" width="70" height="70" loading="lazy" alt="work">
       <h4 class="task__title">${title}</h4>
@@ -49,20 +29,20 @@ const renderTask = (arr) => {
 
 const clickTaskDeleteButton = async (event) => {
 
-  const taskDelete = event.target.closest('.task__delete')
+  const taskDeleteElement = event.target.closest('.task__delete')
 
-  if (!taskDelete) {
+  if (!taskDeleteElement) {
     return
   }
 
-  const task = taskDelete.closest('.task')
+  const task = taskDeleteElement.closest('.task')
 
   const id = task.dataset.id
 
   taskAPI.deleteTask(id)
     .then(data => {
 
-      checkingRelevanceTask(data)
+
 
     })
     .catch(err => {
