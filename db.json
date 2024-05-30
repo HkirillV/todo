@@ -1,5 +1,46 @@
 {
   "task": [
-
+    {
+      "id": 1,
+      "title": "Fitness",
+      "img": "fitness.svg",
+      "tasks": 10
+    },
+    {
+      "id": 2,
+      "title": "Work",
+      "img": "work.svg",
+      "tasks": 10
+    },
+    {
+      "id": 3,
+      "title": "Learning",
+      "img": "learning.svg",
+      "tasks": 10
+    },
+    {
+      "id": 4,
+      "title": "Dinner",
+      "img": "dinner.svg",
+      "tasks": 10
+    },
+    {
+      "id": 5,
+      "title": "Movie",
+      "img": "movie.svg",
+      "tasks": 10
+    },
+    {
+      "id": 6,
+      "title": "Shopping",
+      "img": "shopping.svg",
+      "tasks": 10
+    },
+    {
+      "id": 7,
+      "title": "Design",
+      "img": "design.svg",
+      "tasks": 10
+    }
   ]
 }

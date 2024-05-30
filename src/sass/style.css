@@ -136,7 +136,7 @@ label:hover {
   font-weight: 400;
   line-height: normal;
 }
-.task__delete {
+.task__delete-btn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -153,7 +153,7 @@ label:hover {
   transform: scale(1.05);
 }
 
-.create-section {
+.form-add-task {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -161,10 +161,10 @@ label:hover {
   background-color: #FFFFFF;
   padding: 40px;
 }
-.create-section__input-file[type=file] {
+.form-add-task__input-file[type=file] {
   display: none;
 }
-.create-section__label-file {
+.form-add-task__label-file {
   display: flex;
   align-items: center;
   padding-inline: 15px;
@@ -177,7 +177,7 @@ label:hover {
   font-weight: 400;
   line-height: normal;
 }
-.create-section__input-title {
+.form-add-task__input-title {
   height: 48px;
   border-radius: 4px;
   padding-inline: 20px;
@@ -188,11 +188,11 @@ label:hover {
   font-weight: 400;
   line-height: normal;
 }
-.create-section__input-title:focus {
+.form-add-task__input-title:focus {
   outline: none;
   box-shadow: 0 0 0 3px lightskyblue;
 }
-.create-section__button {
+.form-add-task__button {
   padding-inline: 15px;
   height: 48px;
   border-radius: 4px;

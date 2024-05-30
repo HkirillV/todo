@@ -36,7 +36,7 @@
     @include font($size: 1.6rem, $height: normal, $weight: 400)
   }
 
-  &__delete {
+  &__delete-btn {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -59,7 +59,7 @@
 //  box-shadow: 5px 15px 25px rgb(0, 0, 0, 0.15);
 //}
 
-.create-section {
+.form-add-task{
   display: flex;
   justify-content: space-between;
   align-items: center;
