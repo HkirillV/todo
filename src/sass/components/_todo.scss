@@ -1,4 +1,4 @@
-.todo-list {
+.category {
   display: grid;
   text-align: center;
   grid-gap: 20px;
@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 }
 
-.task {
+.category__task {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -22,21 +22,21 @@
   box-shadow: 5px 15px 25px rgb(0, 0, 0, 0.15);
 
 
-  &__title {
+  &-title {
     color: $color-black;
 
 
     @include font($size: 2rem, $height: normal, $weight: 900)
   }
 
-  &__count {
+  &-count {
     color: $color-black;
 
 
     @include font($size: 1.6rem, $height: normal, $weight: 400)
   }
 
-  &__delete-btn {
+  &-delete-btn {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -45,19 +45,15 @@
     background-color: $color-white;
   }
 
-  &__delete-icon:hover {
+  &-delete-icon:hover {
     fill: red;
   }
 }
 
-.task:hover {
+.category__task:hover {
   opacity: 0.8;
   transform: scale(1.05);
 }
-
-//.create-section * {
-//  box-shadow: 5px 15px 25px rgb(0, 0, 0, 0.15);
-//}
 
 .form-add-task{
   display: flex;
@@ -67,24 +63,23 @@
   background-color: $color-white;
   padding: 40px;
 
-
-  &__input-file[type="file"] {
-    display: none;
-  }
-  &__label-file {
+  &__input-text {
     display: flex;
     align-items: center;
     padding-inline: 15px;
     height: 48px;
     border-radius: 4px;
-    color: $color-white;
-    background-color: $color-cornflowerblue;
-
+    border: 2px solid $color-lightskyblue;
 
     @include font($size: 1.6rem, $height: normal, $weight: 400)
   }
 
-  &__input-title {
+  &__input-text:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px lightskyblue;
+  }
+
+  &__input-category {
     height: 48px;
     border-radius: 4px;
     padding-inline: 20px;
@@ -95,7 +90,7 @@
     @include font($size: 1.6rem, $height: normal, $weight: 400)
   }
 
-  &__input-title:focus {
+  &__input-category:focus {
     outline: none;
     box-shadow: 0 0 0 3px lightskyblue;
   }

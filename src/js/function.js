@@ -31,12 +31,12 @@ export const taskApi = {
 
 }
 
-export const setCacheToTask = (arr) => {
-  localStorage.setItem('task', JSON.stringify(arr))
+export const setCacheToCategoryTask = (arr) => {
+  localStorage.setItem('category-task', JSON.stringify(arr))
 }
 
-export const getCacheToTask = () => {
-  const task = localStorage.getItem('task')
+export const getCacheToCategoryTask = () => {
+  const categoryTask = localStorage.getItem('category-task')
 
-  return task ? JSON.parse(task) : []
+  return categoryTask ? JSON.parse(categoryTask) : []
 }

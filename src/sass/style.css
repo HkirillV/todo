@@ -99,7 +99,7 @@ label:hover {
   line-height: normal;
 }
 
-.todo-list {
+.category {
   display: grid;
   text-align: center;
   grid-gap: 20px;
@@ -108,7 +108,7 @@ label:hover {
   margin-bottom: 20px;
 }
 
-.task {
+.category__task {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -122,21 +122,21 @@ label:hover {
   transition: 0.5s;
   box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.15);
 }
-.task__title {
+.category__task-title {
   color: #000000;
   font-size: 2rem;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
 }
-.task__count {
+.category__task-count {
   color: #000000;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.task__delete-btn {
+.category__task-delete-btn {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -144,11 +144,11 @@ label:hover {
   cursor: pointer;
   background-color: #FFFFFF;
 }
-.task__delete-icon:hover {
+.category__task-delete-icon:hover {
   fill: red;
 }
 
-.task:hover {
+.category__task:hover {
   opacity: 0.8;
   transform: scale(1.05);
 }
@@ -161,23 +161,23 @@ label:hover {
   background-color: #FFFFFF;
   padding: 40px;
 }
-.form-add-task__input-file[type=file] {
-  display: none;
-}
-.form-add-task__label-file {
+.form-add-task__input-text {
   display: flex;
   align-items: center;
   padding-inline: 15px;
   height: 48px;
   border-radius: 4px;
-  color: #FFFFFF;
-  background-color: #6495ED;
+  border: 2px solid lightskyblue;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.form-add-task__input-title {
+.form-add-task__input-text:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+.form-add-task__input-category {
   height: 48px;
   border-radius: 4px;
   padding-inline: 20px;
@@ -188,7 +188,7 @@ label:hover {
   font-weight: 400;
   line-height: normal;
 }
-.form-add-task__input-title:focus {
+.form-add-task__input-category:focus {
   outline: none;
   box-shadow: 0 0 0 3px lightskyblue;
 }
