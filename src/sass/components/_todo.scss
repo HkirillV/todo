@@ -79,7 +79,7 @@
     box-shadow: 0 0 0 3px lightskyblue;
   }
 
-  &__input-category {
+  &__list-category {
     height: 48px;
     border-radius: 4px;
     padding-inline: 20px;
@@ -90,7 +90,7 @@
     @include font($size: 1.6rem, $height: normal, $weight: 400)
   }
 
-  &__input-category:focus {
+  &__list-category:focus {
     outline: none;
     box-shadow: 0 0 0 3px lightskyblue;
   }

@@ -177,7 +177,7 @@ label:hover {
   outline: none;
   box-shadow: 0 0 0 3px lightskyblue;
 }
-.form-add-task__input-category {
+.form-add-task__list-category {
   height: 48px;
   border-radius: 4px;
   padding-inline: 20px;
@@ -188,7 +188,7 @@ label:hover {
   font-weight: 400;
   line-height: normal;
 }
-.form-add-task__input-category:focus {
+.form-add-task__list-category:focus {
   outline: none;
   box-shadow: 0 0 0 3px lightskyblue;
 }
