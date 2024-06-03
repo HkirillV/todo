@@ -25,9 +25,23 @@ export const taskApi = {
       console.error()
     }
   },
-  addTask: async () => {
-
-  }
+  addTask: async (date) => {
+    try {
+      const res = await fetch(`${URL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(date)
+      })
+      if(!res.ok) {
+        throw new Error(res.statusText)
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  },
 
 }
 

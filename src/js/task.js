@@ -7,23 +7,44 @@ const formAddTaskButtonElement = document.querySelector('.form-add-task__button'
 const getTask = getCacheToTask()
 let tasks = getTask > 0 ? getTask : await taskApi.getTask()
 
-const checkCategorySelection = (event) => {
-  event.preventDefault()
-  const category = event.target.closest()
-  return console.log(category)
-  // renderTask()
-}
+const renderTask = (task) => {
+  categoryElement.innerHTML = task.reduce((acc, el) => {
+    const {id, text, category} = el
 
-const renderTask = (category) => {
-  categoryElement.innerHTML = category.reduce((acc, el) => {
-    const {id, title, img, tasks} = el
+    const task = `
+     <div class="task">
+      <input class="task__input" type="text" value="${text}" readonly>
+      <button class="task__btn-delete"><img src="/src/img/delete.svg" width="16" height="16" loading="lazy" alt="btn-delete"></button>
+     </div>
+    `
+    return acc + task
   }, '')
 }
 
-const removeTaskElement = (id) => {
-  const categoryTaskElement = document.querySelector(`.category__task[data-id="${id}"]`)
+const checkCategorySelection = (event) => {
+  if (event) {
+    event.preventDefault()
 
-  categoryTaskElement?.remove()
+    const categoryTaskElement = event.target.closest('.category__task')
+    const categoryTaskTitleElement = categoryTaskElement.querySelector('h4').textContent
+
+    const task = tasks.filter(el => {
+      return el.category === categoryTaskTitleElement
+    })
+
+    if (task.length < 0) {
+      const taskListIsEmpty = `<h1>Список задач пуст</h1>`
+      return renderTask(taskListIsEmpty)
+    }
+    return renderTask(task)
+  }
+
+}
+
+const removeTaskElement = (id) => {
+  const taskElement = document.querySelector(`.category__task[data-id="${id}"]`)
+
+  taskElement?.remove()
 }
 
 const deleteTaskElement = (event) => {
@@ -44,13 +65,14 @@ const addTaskElement = (event) => {
   event.preventDefault()
   const formTaskElement = new FormData(formAddTaskElement)
   const {text, category} = Object.fromEntries(formTaskElement)
+  const id = tasks.length + Math.floor(Math.random() + tasks.length)
+  const task = {id, text, category}
 
-  const task = {text, category}
-  taskApi.addTask()
+  taskApi.addTask(task)
     .then(() => {
       tasks.push(task)
       setCacheToTask(task)
-      renderTask()
+      checkCategorySelection()
     })
     .catch(err => console.log(err))
 }

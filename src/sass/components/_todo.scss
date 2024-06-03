@@ -57,7 +57,7 @@
 
 .form-add-task{
   display: flex;
-  justify-content: space-between;
+  column-gap: 20px;
   align-items: center;
   border-radius: 8px;
   background-color: $color-white;
@@ -68,6 +68,7 @@
     align-items: center;
     padding-inline: 15px;
     height: 48px;
+    width: 100%;
     border-radius: 4px;
     border: 2px solid $color-lightskyblue;
 
@@ -80,7 +81,7 @@
   }
 
   &__list-category {
-    height: 48px;
+    height: 54px;
     border-radius: 4px;
     padding-inline: 20px;
     color: $color-black;
@@ -96,7 +97,7 @@
   }
 
   &__button {
-    padding-inline: 15px;
+    padding-inline: 25px;
     height: 48px;
     border-radius: 4px;
     border: none;
