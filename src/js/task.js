@@ -1,19 +1,19 @@
 import {setCacheToTask, getCacheToTask, taskApi} from "./function.js";
 
 const categoryElement = document.querySelector('.category')
-const formAddTaskElement = document.querySelector('.form-add-task')
-const formAddTaskButtonElement = document.querySelector('.form-add-task__button')
+const addTaskFormElement = document.querySelector('.add-task-form')
+const addTaskFormButtonElement = document.querySelector('.add-task-form__button')
 
 const getTask = getCacheToTask()
-let tasks = getTask > 0 ? getTask : await taskApi.getTask()
+let tasks = getTask > 0 ? getTask : await taskApi.getTask('tasks')
 
 const renderTask = (task) => {
   categoryElement.innerHTML = task.reduce((acc, el) => {
-    const {id, text, category} = el
+    const {id, taskTitle, category} = el
 
     const task = `
      <div class="task">
-      <input class="task__input" type="text" value="${text}" readonly>
+      <input class="input" value="${taskTitle}" readonly>
       <button class="task__btn-delete"><img src="/src/img/delete.svg" width="16" height="16" loading="lazy" alt="btn-delete"></button>
      </div>
     `
@@ -22,20 +22,18 @@ const renderTask = (task) => {
 }
 
 const checkCategorySelection = (event) => {
-  if (event) {
+  if(event) {
     event.preventDefault()
 
     const categoryTaskElement = event.target.closest('.category__task')
     const categoryTaskTitleElement = categoryTaskElement.querySelector('h4').textContent
 
-    const task = tasks.filter(el => {
-      return el.category === categoryTaskTitleElement
-    })
+    const task = tasks.filter(el => el.category === categoryTaskTitleElement)
 
-    if (task.length < 0) {
-      const taskListIsEmpty = `<h1>Список задач пуст</h1>`
-      return renderTask(taskListIsEmpty)
+    if (task.length <= 0) {
+      return categoryElement.innerHTML = `<h2>Список задач пуст!</h2>`
     }
+
     return renderTask(task)
   }
 
@@ -47,28 +45,28 @@ const removeTaskElement = (id) => {
   taskElement?.remove()
 }
 
-const deleteTaskElement = (event) => {
-  event.preventDefault()
-  const categoryTaskDeleteBtn = event.target.closest('.category__task-delete-btn')
+const deleteTaskElement = (id) => {
 
-  const categoryTaskElement = categoryTaskDeleteBtn.closest('.category__task')
-  const {id} = categoryTaskElement.dataset
-
-  taskApi.deleteTask(id)
+  taskApi.deleteTask('tasks', id)
     .then(() => {
 
     })
     .catch(err => console.log(err))
 }
 
-const addTaskElement = (event) => {
+const onDeleteTaskButtonClick = (event) => {
   event.preventDefault()
-  const formTaskElement = new FormData(formAddTaskElement)
-  const {text, category} = Object.fromEntries(formTaskElement)
-  const id = tasks.length + Math.floor(Math.random() + tasks.length)
-  const task = {id, text, category}
+  const categoryTaskDeleteBtn = event.target.closest('.category__task-delete-btn')
 
-  taskApi.addTask(task)
+  const categoryTaskElement = categoryTaskDeleteBtn.closest('.category__task')
+  const {id} = categoryTaskElement.dataset
+
+  deleteTaskElement(id)
+}
+
+const addTaskElement = (task) => {
+
+  taskApi.addTask('tasks', task)
     .then(() => {
       tasks.push(task)
       setCacheToTask(task)
@@ -77,6 +75,16 @@ const addTaskElement = (event) => {
     .catch(err => console.log(err))
 }
 
+const onAddTaskButtonClick = (event) => {
+  event.preventDefault()
+  const formTaskElement = new FormData(addTaskFormElement)
+  const {taskTitle, category} = Object.fromEntries(formTaskElement)
+  const id = tasks.length + Math.floor(Math.random() + tasks.length)
+  const task = {id, taskTitle, category}
+
+  addTaskElement(task)
+}
+
 categoryElement.addEventListener('click', checkCategorySelection)
 
-formAddTaskButtonElement.addEventListener('click', addTaskElement)
+addTaskFormButtonElement.addEventListener('click', onAddTaskButtonClick)

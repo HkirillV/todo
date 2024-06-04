@@ -1,11 +1,11 @@
 import {setCacheToCategoryTask, getCacheToCategoryTask, taskApi} from "./function.js";
 
 const categoryElement = document.querySelector('.category')
-const formAddTaskListCategory = document.querySelector('.form-add-task__list-category')
+const addTaskFormSelectElement = document.querySelector('.add-task-form__select')
 
 const getCategoryTask = getCacheToCategoryTask()
 
-let categoryTasks = getCategoryTask.length > 0 ? getCategoryTask : await taskApi.getTask()
+let categoryTasks = getCategoryTask.length > 0 ? getCategoryTask : await taskApi.getTask('category')
 
 const renderCategoryTask = () => {
 
@@ -28,18 +28,18 @@ renderCategoryTask()
 
 const categoryTaskTitle = document.querySelectorAll('.category__task-title')
 
-const renderListCategory = () => {
-  formAddTaskListCategory.innerHTML = Array.from(categoryTaskTitle).reduce((acc, el) => {
+const renderSelectCategory = () => {
+  addTaskFormSelectElement.innerHTML = Array.from(categoryTaskTitle).reduce((acc, el) => {
       const categoryTitle = el.textContent
 
     const category = `
-      <option value="${categoryTitle}">${categoryTitle}</option>
+      <option class="option" value="${categoryTitle}">${categoryTitle}</option>
     `
     return category + acc
   }, '')
 }
 
-renderListCategory()
+renderSelectCategory()
 
 
 

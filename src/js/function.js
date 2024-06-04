@@ -1,9 +1,9 @@
-const URL = 'http://localhost:3000/task'
+const URL = 'http://localhost:3000'
 
 export const taskApi = {
-  getTask: async () => {
+  getTask: async (dbName) => {
     try {
-      const res = await fetch(URL)
+      const res = await fetch(`${URL}/${dbName}`)
       if (!res.ok) {
         throw new Error(res.statusText)
       }
@@ -12,9 +12,9 @@ export const taskApi = {
       console.error(err)
     }
   },
-  deleteTask: async (id) => {
+  deleteTask: async (dbName, id) => {
     try {
-      const res = await fetch(`${URL}/${id}`, {
+      const res = await fetch(`${URL}/${dbName}/${id}`, {
         method: 'DELETE'
       })
       if (!res.ok) {
@@ -25,9 +25,9 @@ export const taskApi = {
       console.error()
     }
   },
-  addTask: async (date) => {
+  addTask: async (dbName, date) => {
     try {
-      const res = await fetch(`${URL}`, {
+      const res = await fetch(`${URL}/${dbName}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

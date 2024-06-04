@@ -1,51 +1,58 @@
 {
-  "task": [
+  "category": [
     {
       "id": "1",
       "title": "Fitness",
       "img": "fitness.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "2",
       "title": "Work",
       "img": "work.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "3",
       "title": "Learning",
       "img": "learning.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "4",
       "title": "Dinner",
       "img": "dinner.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "5",
       "title": "Movie",
       "img": "movie.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "6",
       "title": "Shopping",
       "img": "shopping.svg",
-      "tasks": 10
+      "tasks": 0
     },
     {
       "id": "7",
       "title": "Design",
       "img": "design.svg",
-      "tasks": 10
+      "tasks": 0
+    }
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "taskTitle": "test",
+      "category": "Design"
     },
     {
-      "id": 14,
-      "text": "подготовиться к собеседованию",
-      "category": "Design"
+      "id": 2,
+      "taskTitle": "test",
+      "category": "Shopping"
     }
   ]
 }

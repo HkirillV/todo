@@ -3,18 +3,6 @@
   column-gap: 10px;
   width: 600px;
 
-  &__input {
-    display: flex;
-    align-items: center;
-    padding-inline: 15px;
-    height: 48px;
-    width: 100%;
-    border-radius: 4px;
-    border: 2px solid $color-lightskyblue;
-
-    @include font($size: 1.6rem, $height: normal, $weight: 400)
-  }
-
   &__btn-delete {
    width: 55px;
   }
