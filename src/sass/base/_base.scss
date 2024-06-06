@@ -49,20 +49,51 @@ p {
   margin: 0;
 }
 
-
 li {
   list-style-type: none;
 }
 
-button, label {
-  transition: 0.3s;
+.button {
+  height: 48px;
+  border: none;
   cursor: pointer;
+  border-radius: 4px;
+  background-color: $color-cornflowerblue;
+  color: $color-white;
+  transition: 0.2s;
+
+
+  @include font($size: 1.6rem, $height: normal, $weight: 400)
 }
 
-button:hover {
+.button:hover {
   opacity: 0.8;
 }
 
-label:hover {
-  opacity: 0.8;
+.input {
+  display: flex;
+  align-items: center;
+  padding-inline: 15px;
+  height: 48px;
+  width: 100%;
+  border-radius: 4px;
+  border: 2px solid $color-lightskyblue;
+
+  @include font($size: 1.6rem, $height: normal, $weight: 400)
 }
+
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px lightskyblue;
+}
+
+.select {
+  height: 48px;
+  width: 50%;
+  border-radius: 4px;
+  border: 2px solid $color-lightskyblue;
+
+  @include font($size: 1.6rem, $height: normal, $weight: 400)
+}
+

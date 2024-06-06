@@ -64,3 +64,9 @@ export const getCacheToTask = () => {
 
   return task ? JSON.parse(task) : []
 }
+
+export const checkClassIsActive = (element) => element.classList.toggle('is-active')
+
+
+export const onRefreshToPage = () => window.location.reload()
+

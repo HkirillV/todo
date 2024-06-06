@@ -8,14 +8,14 @@
 }
 
 .category__task {
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  position: relative;
   row-gap: 10px;
   padding: 40px;
+  cursor: pointer;
   border-radius: 8px;
   background-color: $color-white;
   transition: 0.5s;
@@ -44,17 +44,17 @@
 
 .add-task-form {
   display: flex;
-  column-gap: 20px;
   align-items: center;
+  column-gap: 20px;
+  padding: 40px;
   border-radius: 8px;
   background-color: $color-white;
-  padding: 40px;
 
 
   &__category {
     height: 54px;
-    border-radius: 4px;
     padding-inline: 20px;
+    border-radius: 4px;
     color: $color-black;
     border: 2px solid $color-lightskyblue;
 
@@ -66,48 +66,10 @@
     outline: none;
     box-shadow: 0 0 0 3px lightskyblue;
   }
+
+  &__button {
+    padding-inline: 25px;
+  }
 }
 
-
-.button {
-  padding-inline: 25px;
-  height: 48px;
-  border-radius: 4px;
-  border: none;
-  background-color: $color-cornflowerblue;
-  color: $color-white;
-
-
-  @include font($size: 1.6rem, $height: normal, $weight: 400)
-}
-
-
-.input {
-  display: flex;
-  align-items: center;
-  padding-inline: 15px;
-  height: 48px;
-  width: 100%;
-  border-radius: 4px;
-  border: 2px solid $color-lightskyblue;
-
-  @include font($size: 1.6rem, $height: normal, $weight: 400)
-}
-
-
-.input:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px lightskyblue;
-}
-
-
-
-.select {
-  height: 48px;
-  width: 50%;
-  border-radius: 4px;
-  border: 2px solid $color-lightskyblue;
-
-  @include font($size: 1.6rem, $height: normal, $weight: 400)
-}
 

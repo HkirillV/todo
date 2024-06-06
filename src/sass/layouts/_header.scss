@@ -1,6 +1,6 @@
 .navigation {
   display: flex;
-  justify-content: center;
+  align-items: center;
   padding-top: 20px;
   margin-bottom: 20px;
 
@@ -9,4 +9,13 @@
 
     @include font($size: 2.8rem, $height: normal, $weight: 700)
   }
+
+  &__button {
+    visibility: hidden;
+    margin-right: 220px;
+  }
+}
+
+.is-active {
+  visibility: visible;
 }
