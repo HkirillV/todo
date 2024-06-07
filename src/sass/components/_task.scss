@@ -2,12 +2,12 @@
   display: flex;
   column-gap: 10px;
   width: 600px;
+}
 
-  &__delete-button {
-    height: 54px;
-    padding-inline: 15px;
-    background-color: $color-white;
-  }
+.delete-button-task {
+  height: 54px;
+  padding-inline: 15px;
+  background-color: $color-white;
 }
 
 .task-list-empty {

@@ -4,18 +4,19 @@ const categoryElement = document.querySelector('.category')
 const addTaskFormElement = document.querySelector('.add-task-form')
 const addTaskFormButtonElement = document.querySelector('.add-task-form__button')
 const navigationButtonElement = document.querySelector('.navigation__button')
+const deleteButtonTaskElement = document.querySelector('.delete-button-task')
 
 const getTask = getCacheToTask()
 let tasks = getTask > 0 ? getTask : await taskApi.getTask('tasks')
 
 const renderTask = (task) => {
   categoryElement.innerHTML = task.reduce((acc, el) => {
-    const { taskTitle } = el
+    const { id, taskTitle, category } = el
 
     const task = `
-     <div class="task">
+     <div class="task" data-id="${id}">
       <input class="input" value="${taskTitle}" readonly>
-      <button class="task__delete-button button"><img src="/src/img/delete.svg" width="25" height="25" loading="lazy" alt="btn-delete"></button>
+      <button class="delete-button-task button"><img src="/src/img/delete.svg" width="25" height="25" loading="lazy" alt="btn-delete"></button>
      </div>
     `
     return acc + task
@@ -25,12 +26,12 @@ const renderTask = (task) => {
 const checkCategorySelection = (event) => {
   if (event) {
     event.preventDefault()
-    checkClassIsActive(navigationButtonElement)
+
     const categoryTaskElement = event.target.closest('.category__task')
     const categoryTaskTitleElement = categoryTaskElement.querySelector('h4').textContent
 
     const task = tasks.filter(el => el.category === categoryTaskTitleElement)
-
+    checkClassIsActive(navigationButtonElement)
     if (task.length <= 0) {
       return categoryElement.innerHTML = `<h2 class="task-list-empty">Список задач пуст!</h2>`
     }
@@ -57,12 +58,12 @@ const deleteTaskElement = (id) => {
 
 const onDeleteTaskButtonClick = (event) => {
   event.preventDefault()
-  const categoryTaskDeleteBtn = event.target.closest('.category__delete-task-button')
+  const deleteButtonTaskElement = event.target.closest('.delete-button-task')
 
-  const categoryTaskElement = categoryTaskDeleteBtn.closest('.category__task')
-  const {id} = categoryTaskElement.dataset
-
-  deleteTaskElement(id)
+  const taskElement = deleteButtonTaskElement.closest('.task')
+  const {id} = taskElement.dataset
+  return console.log(id)
+  // deleteTaskElement(id)
 }
 
 const addTaskElement = (task) => {
@@ -91,3 +92,5 @@ navigationButtonElement.addEventListener('click', onRefreshToPage)
 categoryElement.addEventListener('click', checkCategorySelection)
 
 addTaskFormButtonElement.addEventListener('click', onAddTaskButtonClick)
+
+deleteButtonTaskElement.addEventListener('click', onDeleteTaskButtonClick)

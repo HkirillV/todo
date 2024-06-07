@@ -11,6 +11,8 @@
   }
 
   &__button {
+    display: flex;
+    align-items: center;
     visibility: hidden;
     margin-right: 220px;
   }
