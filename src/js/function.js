@@ -68,5 +68,5 @@ export const getCacheToTask = () => {
 export const checkClassIsActive = (element) => element.classList.toggle('is-active')
 
 
-export const onRefreshToPage = () => window.location.reload()
+export const refreshPage = () => window.location.reload()
 

@@ -137,7 +137,7 @@ img {
   font-weight: 700;
   line-height: normal;
 }
-.navigation__button {
+.navigation__return-button {
   display: flex;
   align-items: center;
   visibility: hidden;
@@ -222,6 +222,13 @@ img {
   display: flex;
   column-gap: 10px;
   width: 600px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 20px;
 }
 
 .delete-button-task {

@@ -43,21 +43,5 @@
       "tasks": 0
     }
   ],
-  "tasks": [
-    {
-      "id": "0",
-      "taskTitle": "test",
-      "category": "Design"
-    },
-    {
-      "id": "2",
-      "taskTitle": "test",
-      "category": "Shopping"
-    },
-    {
-      "id": 4,
-      "taskTitle": "test",
-      "category": "Fitness"
-    }
-  ]
+  "tasks": []
 }
