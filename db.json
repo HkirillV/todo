@@ -43,5 +43,21 @@
       "tasks": 0
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": 0,
+      "taskTitle": "test",
+      "category": "Work"
+    },
+    {
+      "id": 2,
+      "taskTitle": "test1",
+      "category": "Design"
+    },
+    {
+      "id": 4,
+      "taskTitle": "kirill",
+      "category": "Work"
+    }
+  ]
 }

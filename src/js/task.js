@@ -24,6 +24,8 @@ const renderTask = (task) => {
   }, '')
 }
 
+setCacheToTask(tasks)
+
 const removeTaskElement = (id) => {
   const taskElement = document.querySelector(`.category__task[data-id="${id}"]`)
 
@@ -37,7 +39,7 @@ const deleteTaskElement = (id) => {
       tasks = tasks.filter(task => task.id !== id)
       removeTaskElement(id)
       setCacheToTask(tasks)
-      renderTask(tasks)
+      renderTask()
     })
     .catch(err => console.log(err))
 }
@@ -53,28 +55,8 @@ const onDeleteTaskButtonClick = (event) => {
   deleteTaskElement(id)
 }
 
-const addTaskElement = (task) => {
+const onCategoryTaskClick = (event) => {
 
-  taskApi.addTask('tasks', task)
-    .then(() => {
-      tasks.push(task)
-      setCacheToTask(task)
-      onClickCategoryTaskClick()
-    })
-    .catch(err => console.log(err))
-}
-
-const onAddTaskButtonClick = (event) => {
-  event.preventDefault()
-  const formTaskElement = new FormData(addTaskFormElement)
-  const {taskTitle, category} = Object.fromEntries(formTaskElement)
-  const id = tasks.length + Math.floor(Math.random() + tasks.length)
-  const task = {id, taskTitle, category}
-
-  addTaskElement(task)
-}
-
-const onClickCategoryTaskClick = (event) => {
   if (event) {
     event.preventDefault()
     const categoryTaskElement = event.target.closest('.category__task')
@@ -92,9 +74,37 @@ const onClickCategoryTaskClick = (event) => {
   }
 }
 
+const checkCategoryTaskElement = (task) => {
+  const {id, taskTitle, category} = task
+  const newTask = tasks.filter(el => el.category === category)
+
+  return renderTask(newTask)
+}
+
+const addTaskElement = (task) => {
+
+  taskApi.addTask('tasks', task)
+    .then(() => {
+      tasks.push(task)
+      setCacheToTask(tasks)
+      checkCategoryTaskElement(task)
+    })
+    .catch(err => console.log(err))
+}
+
+const onAddTaskButtonClick = (event) => {
+  event.preventDefault()
+  const formTaskElement = new FormData(addTaskFormElement)
+  const {taskTitle, category} = Object.fromEntries(formTaskElement)
+  const id = tasks.length + Math.floor(Math.random() + tasks.length)
+  const task = {id, taskTitle, category}
+
+  addTaskElement(task)
+}
+
 returnButtonElement.addEventListener('click', refreshPage)
 
-categoryElement.addEventListener('click', onClickCategoryTaskClick)
+categoryElement.addEventListener('click', onCategoryTaskClick)
 
 addTaskFormButtonElement.addEventListener('click', onAddTaskButtonClick)
 
