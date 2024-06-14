@@ -41,8 +41,29 @@ export const taskApi = {
     catch (err) {
       console.log(err)
     }
-  },
+  }
+}
 
+export const categoryApi =  {
+  editCategory: async (dbName, id, newNumberTasks) => {
+    try {
+      const res = await fetch(`${URL}/${dbName}/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          tasks: newNumberTasks
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (!res.ok) {
+        throw new Error(res.statusText)
+      }
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
 }
 
 export const setCacheToCategoryTask = (arr) => {

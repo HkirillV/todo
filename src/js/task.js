@@ -1,4 +1,5 @@
 import {setCacheToTask, getCacheToTask, checkClassIsActive, refreshPage, taskApi} from "./function.js";
+import { updateNumberTasksElement } from "./categoryTask.js";
 
 const categoryElement = document.querySelector('.category')
 const taskListElement = document.querySelector('.task-list')
@@ -78,7 +79,7 @@ const checkCategoryTaskElement = (task) => {
   const {id, taskTitle, category} = task
   const newTask = tasks.filter(el => el.category === category)
 
-  return renderTask(newTask)
+  return updateNumberTasksElement(category, true)
 }
 
 const addTaskElement = (task) => {
