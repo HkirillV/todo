@@ -22,7 +22,7 @@
       "id": "4",
       "title": "Dinner",
       "img": "dinner.svg",
-      "tasks": 0
+      "tasks": 1
     },
     {
       "id": "5",
@@ -40,39 +40,10 @@
       "id": "7",
       "title": "Design",
       "img": "design.svg",
-      "tasks": 6
+      "tasks": 0
     }
   ],
   "tasks": [
-    {
-      "id": 0,
-      "taskTitle": "dasdasdasasd",
-      "category": "Design"
-    },
-    {
-      "id": 2,
-      "taskTitle": "asdasd",
-      "category": "Design"
-    },
-    {
-      "id": 4,
-      "taskTitle": "asdasd",
-      "category": "Design"
-    },
-    {
-      "id": 6,
-      "taskTitle": "asdasd",
-      "category": "Design"
-    },
-    {
-      "id": 8,
-      "taskTitle": "asdasd",
-      "category": "Design"
-    },
-    {
-      "id": 10,
-      "taskTitle": "asdasdasd",
-      "category": "Design"
-    }
+
   ]
 }

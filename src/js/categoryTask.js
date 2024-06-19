@@ -39,18 +39,27 @@ const renderSelectCategory = () => {
   }, '')
 }
 
-export const updateNumberTasksElement = (category, add = false) => {
-  let { id, title, img, tasks } = categoryTasks.find(el => el.title === category)
-  add ? tasks += 1 : tasks -= 1
+export const updateNumberScoreTasksElement = (category, action) => {
+  let {id, title, img, tasks} = categoryTasks.find(el => el.title === category)
+  action ? tasks += 1 : tasks -= 1
 
-  categoryTasks = categoryTasks.filter(el => el.id  !== id)
-  let newCategory = { id, title, img,  tasks}
+  categoryTasks = categoryTasks.filter(el => el.id !== id)
+  let newCategory = {id, title, img, tasks}
+
+  if (action === true) {
+    return categoryApi.editCategory("category", id, tasks)
+      .then(() => {
+        categoryTasks.push(newCategory)
+        setCacheToCategoryTask(categoryTasks)
+        renderCategoryTask()
+      })
+      .catch(err => console.log(err))
+  }
 
   categoryApi.editCategory("category", id, tasks)
     .then(() => {
       categoryTasks.push(newCategory)
       setCacheToCategoryTask(categoryTasks)
-      renderCategoryTask()
     })
     .catch(err => console.log(err))
 }
