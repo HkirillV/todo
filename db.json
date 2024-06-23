@@ -3,43 +3,43 @@
     {
       "id": "1",
       "title": "Fitness",
-      "img": "fitness.svg",
+      "imgSrc": "fitness.svg",
       "tasks": 0
     },
     {
       "id": "2",
       "title": "Work",
-      "img": "work.svg",
+      "imgSrc": "work.svg",
       "tasks": 0
     },
     {
       "id": "3",
       "title": "Learning",
-      "img": "learning.svg",
+      "imgSrc": "learning.svg",
       "tasks": 0
     },
     {
       "id": "4",
       "title": "Dinner",
-      "img": "dinner.svg",
-      "tasks": 1
+      "imgSrc": "dinner.svg",
+      "tasks": 0
     },
     {
       "id": "5",
       "title": "Movie",
-      "img": "movie.svg",
+      "imgSrc": "movie.svg",
       "tasks": 0
     },
     {
       "id": "6",
       "title": "Shopping",
-      "img": "shopping.svg",
+      "imgSrc": "shopping.svg",
       "tasks": 0
     },
     {
       "id": "7",
       "title": "Design",
-      "img": "design.svg",
+      "imgSrc": "design.svg",
       "tasks": 0
     }
   ],

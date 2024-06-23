@@ -1,20 +1,14 @@
-
 //Abstract
-@import "abstract/constants";
+@import "abstract/variables";
 @import "abstract/fonts";
 @import "abstract/mixins";
-
 
 //Base
 @import "base/base";
 @import "base/container";
 
-
-
 //Layouts
 @import "layouts/header";
-
-
 
 //Components
 @import "components/todo";

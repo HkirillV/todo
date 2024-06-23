@@ -5,32 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="src/sass/style.css">
+  <script type="module" src="index.js" defer></script>
   <title>TODO | Главная</title>
 </head>
 <body>
 <header class="header container">
   <nav class="navigation">
-    <button class="navigation__return-button button"><img src="/src/img/arrow_left.svg" width="35" height="35" loading="lazy" alt="arrow-left-button"></button>
+    <button class="navigation__return-button button" type="button"><img src="/src/img/arrow_left.svg" width="35"
+                                                                        height="35" loading="lazy" alt=""></button>
     <h1 class="navigation__title">Todo</h1>
   </nav>
 </header>
 <main class="container">
   <section class="todo">
     <div class="category">
-
     </div>
     <div class="task-list">
-
     </div>
     <form class="add-task-form">
-      <input class="add-task-form__input input"  name="taskTitle">
+      <label class="add-task-form__label visually-hidden" for="title">Заголовок</label>
+      <input class="add-task-form__input input" id="title" name="taskTitle">
       <select class="add-task-form__select select" name="category">
-
       </select>
-      <button class="add-task-form__button button" type="button">Add</button>
+      <button class="add-task-form__button button" type="submit">Add</button>
     </form>
   </section>
 </main>
-<script type="module" src="index.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
   cursor: pointer;
   border-radius: 8px;
   background-color: $color-white;
-  transition: 0.5s;
+  transition-duration: 0.5s;
   box-shadow: 5px 15px 25px rgb(0, 0, 0, 0.15);
 
 
@@ -39,7 +39,7 @@
 
 .category__task:hover {
   opacity: 0.8;
-  transform: scale(1.05);
+  scale: 1.05;
 }
 
 .add-task-form {
@@ -64,7 +64,7 @@
 
   &__category:focus {
     outline: none;
-    box-shadow: 0 0 0 3px lightskyblue;
+    box-shadow: 0 0 0 3px $color-lightskyblue;
   }
 
   &__button {
