@@ -1,11 +1,9 @@
-@mixin font ($size, $height: $size, $weight: 400, $style: normal) {
-  font-size:$size;
-  font-style: $style;
-  font-weight: $weight;
-  line-height: $height;
+@mixin media-tablet {
+  @media (max-width: 500px) {
+    @content
+  }
 }
 
-
-@mixin media-tablet {
-  @media (max-width: 500px) {@content}
+.visually-hidden {
+  display: none;
 }

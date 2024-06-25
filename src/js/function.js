@@ -25,14 +25,14 @@ export const taskApi = {
       console.error()
     }
   },
-  addTask: async (dbName, date) => {
+  addTask: async (dbName, data) => {
     try {
       const res = await fetch(`${URL}/${dbName}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(date)
+        body: JSON.stringify(data)
       })
       if(!res.ok) {
         throw new Error(res.statusText)
@@ -66,11 +66,16 @@ export const categoryApi =  {
   }
 }
 
-export const setCacheToCategoryTask = (arr) => {
+export const  dbName= {
+  dbCategory: 'category',
+  dbTasks: 'tasks'
+}
+
+export const setTasksToCache = (arr) => {
   localStorage.setItem('category-task', JSON.stringify(arr))
 }
 
-export const getCacheToCategoryTask = () => {
+export const getTasksFromCache = () => {
   const categoryTask = localStorage.getItem('category-task')
 
   return categoryTask ? JSON.parse(categoryTask) : []
@@ -86,7 +91,7 @@ export const getCacheToTask = () => {
   return task ? JSON.parse(task) : []
 }
 
-export const checkClassIsActive = (element) => element.classList.toggle('is-active')
+export const toggleIsActive = (element) => element.classList.toggle('is-active')
 
 
 export const refreshPage = () => window.location.reload()

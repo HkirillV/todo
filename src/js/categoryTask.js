@@ -1,35 +1,35 @@
-import {setCacheToCategoryTask, getCacheToCategoryTask, taskApi, categoryApi} from "./function.js";
+import {setTasksToCache, getTasksFromCache, taskApi, categoryApi, dbName} from "./function.js";
 
 const categoryElement = document.querySelector('.category')
 const addTaskFormSelectElement = document.querySelector('.add-task-form__select')
 
-const getCategoryTask = getCacheToCategoryTask()
+const getCategoryTask = getTasksFromCache()
 
-const categoryTasks = getCategoryTask.length > 0 ? getCategoryTask : await taskApi.getTask('category')
+let categoryTasks = getCategoryTask.length > 0 ? getCategoryTask : await taskApi.getTask(dbName.dbCategory)
 
 const renderCategoryTask = () => {
-
-  categoryElement.innerHTML = categoryTasks.reduce((acc, el) => {
+  const markup = categoryTasks.reduce((totalMarkup, el) => {
     const {id, title, imgSrc, tasks} = el
-    const task = `
+    const category = `
       <div class="category__task" data-id="${id}">
-      <img class="category__task-image" src="/src/img/${imgSrc}" width="70" height="70" loading="lazy" alt="work">
-      <h4 class="category__task-title">${title}</h4>
-      <span class="category__task-count">Tasks ${tasks}</span>
-    </div>
+        <img class="category__task-image" src="/src/img/${imgSrc}" width="70" height="70" loading="lazy" alt="">
+        <h3 class="category__task-title">${title}</h3>
+        <span class="category__task-count">Tasks ${tasks}</span>
+      </div>
       `
 
-    return acc + task
+    return totalMarkup + category
   }, '')
+  categoryElement.innerHTML = markup
 }
 
-setCacheToCategoryTask(categoryTasks)
+setTasksToCache(categoryTasks)
 renderCategoryTask()
 
 const categoryTaskTitle = document.querySelectorAll('.category__task-title')
 
 const renderSelectCategory = () => {
-  addTaskFormSelectElement.innerHTML = Array.from(categoryTaskTitle).reduce((acc, el) => {
+  addTaskFormSelectElement.innerHTML = [...categoryTaskTitle].reduce((acc, el) => {
     const categoryTitle = el.textContent
 
     const category = `
@@ -40,28 +40,32 @@ const renderSelectCategory = () => {
 }
 
 export const updateNumberScoreTasksElement = (category, action) => {
-  let {id, title, img, tasks} = categoryTasks.find(el => el.title === category)
-  action ? tasks += 1 : tasks -= 1
-
-  categoryTasks = categoryTasks.filter(el => el.id !== id)
-  let newCategory = {id, title, img, tasks}
-
-  if (action === true) {
-    return categoryApi.editCategory("category", id, tasks)
-      .then(() => {
-        categoryTasks.push(newCategory)
-        setCacheToCategoryTask(categoryTasks)
-        renderCategoryTask()
-      })
-      .catch(err => console.log(err))
+   let {id, title, imgSrc, tasks} = categoryTasks.find(el => el.title === category)
+  if (action) {
+    tasks += 1
+  } else {
+    tasks -= 1
   }
 
-  categoryApi.editCategory("category", id, tasks)
-    .then(() => {
-      categoryTasks.push(newCategory)
-      setCacheToCategoryTask(categoryTasks)
-    })
-    .catch(err => console.log(err))
+  categoryTasks = categoryTasks.filter(el => el.id !== id)
+  let newCategory = {id, title, imgSrc, tasks}
+
+  if (action) {
+    return categoryApi.editCategory(dbName.dbCategory, id, tasks)
+      .then(() => {
+        categoryTasks.push(newCategory)
+        setTasksToCache(categoryTasks)
+        renderCategoryTask()
+      })
+      .catch(console.log)
+  } else {
+    categoryApi.editCategory(dbName.dbCategory, id, tasks)
+      .then(() => {
+        categoryTasks.push(newCategory)
+        setTasksToCache(categoryTasks)
+      })
+      .catch(console.log)
+  }
 }
 
 renderSelectCategory()

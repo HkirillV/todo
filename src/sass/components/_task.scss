@@ -14,10 +14,10 @@
 .delete-button-task {
   height: 54px;
   padding-inline: 15px;
-  background-color: $color-white;
+  background-color: var(--color-light);
 }
 
 .task-list-empty {
   padding-top: 40px;
-  color: $color-white;
+  color: var(--color-light);
 }

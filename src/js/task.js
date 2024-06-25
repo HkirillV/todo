@@ -1,4 +1,4 @@
-import {setCacheToTask, getCacheToTask, checkClassIsActive, refreshPage, taskApi} from "./function.js";
+import {setCacheToTask, getCacheToTask, toggleIsActive, refreshPage, taskApi, dbName} from "./function.js";
 import {updateNumberScoreTasksElement} from "./categoryTask.js";
 
 const categoryElement = document.querySelector('.category')
@@ -8,7 +8,7 @@ const addTaskFormButtonElement = document.querySelector('.add-task-form__button'
 const returnButtonElement = document.querySelector('.navigation__return-button')
 
 const getTask = getCacheToTask()
-let tasks = getTask > 0 ? getTask : await taskApi.getTask('tasks')
+let tasks = getTask > 0 ? getTask : await taskApi.getTask(dbName.dbTasks)
 
 const renderTask = () => {
   categoryElement.innerHTML = ''
@@ -18,7 +18,7 @@ const renderTask = () => {
     const task = `
      <div class="task" data-id="${id}">
       <input class="input" value="${taskTitle}" readonly>
-      <button class="delete-button-task button"><img src="/src/img/delete.svg" width="25" height="25" loading="lazy" alt="btn-delete"></button>
+      <button class="delete-button-task button"><img src="/src/img/delete.svg" width="25" height="25" loading="lazy" alt=""></button>
      </div>
     `
     return acc + task
@@ -28,22 +28,22 @@ const renderTask = () => {
 setCacheToTask(tasks)
 
 const onCategoryTaskClick = (event) => {
-
-  if (event) {
-    event.preventDefault()
-    const categoryTaskElement = event.target.closest('.category__task')
-
-    const categoryTaskTitleElement = categoryTaskElement.querySelector('h4').textContent
-
-    tasks = tasks.filter(el => el.category === categoryTaskTitleElement)
-    checkClassIsActive(returnButtonElement)
-
-    if (tasks.length <= 0) {
-      return categoryElement.innerHTML = `<h2 class="task-list-empty">Список задач пуст!</h2>`
-    }
-
-    return renderTask()
+  if (!event) {
+    return
   }
+  event.preventDefault()
+  const categoryTaskElement = event.target.closest('.category__task')
+
+  const categoryTaskTitleElement = categoryTaskElement.querySelector('h3').textContent
+
+  tasks = tasks.filter(el => el.category === categoryTaskTitleElement)
+  toggleIsActive(returnButtonElement)
+
+  if (tasks.length <= 0) {
+    return categoryElement.innerHTML = `<h2 class="task-list-empty">Список задач пуст!</h2>`
+  }
+
+  return renderTask()
 }
 
 const getCategoryAddTaskElement = (task) => {
@@ -73,13 +73,13 @@ const checkLengthCategoryTask = (value) => {
 
 const addTaskElement = (task) => {
 
-  taskApi.addTask('tasks', task)
+  taskApi.addTask(dbName.dbTasks, task)
     .then(() => {
       tasks.push(task)
       setCacheToTask(tasks)
       checkLengthCategoryTask(task)
     })
-    .catch(err => console.log(err))
+    .catch(console.log)
 }
 
 const onAddTaskButtonClick = (event) => {
@@ -100,21 +100,19 @@ const removeTaskElement = (id) => {
 
 const deleteTaskElement = (id) => {
 
-  taskApi.deleteTask('tasks', id)
+  taskApi.deleteTask(dbName.dbTasks, id)
     .then(() => {
       checkLengthCategoryTask(id)
       tasks = tasks.filter(task => task.id !== id)
       removeTaskElement(id)
       setCacheToTask(tasks)
     })
-    .catch(err => console.log(err))
+    .catch(console.log)
 }
 
 const onDeleteTaskButtonClick = (event) => {
   event.preventDefault()
-
-  const deleteButtonTaskElement = event.target.closest('.delete-button-task')
-  const taskElement = deleteButtonTaskElement.closest('.task')
+  const taskElement = event.target.closest('.task')
 
   const {id} = taskElement.dataset
 

@@ -17,23 +17,12 @@
   padding: 40px;
   cursor: pointer;
   border-radius: 8px;
-  background-color: $color-white;
+  background-color: var(--color-light);
   transition-duration: 0.5s;
   box-shadow: 5px 15px 25px rgb(0, 0, 0, 0.15);
 
-
-  &-title {
-    color: $color-black;
-
-
-    @include font($size: 3rem, $height: normal, $weight: 700)
-  }
-
   &-count {
-    color: $color-black;
-
-
-    @include font($size: 1.6rem, $height: normal, $weight: 400)
+    color: var(--color-dark);
   }
 }
 
@@ -48,23 +37,20 @@
   column-gap: 20px;
   padding: 40px;
   border-radius: 8px;
-  background-color: $color-white;
+  background-color: var(--color-light);
 
 
   &__category {
     height: 54px;
     padding-inline: 20px;
     border-radius: 4px;
-    color: $color-black;
-    border: 2px solid $color-lightskyblue;
-
-
-    @include font($size: 1.6rem, $height: normal, $weight: 400)
+    color: var(--color-dark);
+    border: 2px solid var(--color-brand-light);
   }
 
   &__category:focus {
     outline: none;
-    box-shadow: 0 0 0 3px $color-lightskyblue;
+    box-shadow: 0 0 0 3px var(--color-brand-light);
   }
 
   &__button {

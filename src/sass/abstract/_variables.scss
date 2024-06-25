@@ -1,5 +1,7 @@
-$color-cornflowerblue: #6495ED;
-$color-white: #FFFFFF;
-$color-black: #000000;
-$color-lightskyblue: lightskyblue;
-$color-green: green;
+:root {
+  --color-brand: #6495ED;
+  --color-light: #FFFFFF;
+  --color-dark: #000000;
+  --color-brand-light: lightskyblue;
+  --color-success: green;
+}

@@ -4,7 +4,10 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: $color-cornflowerblue;
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--color-dark);
+  background-color: var(--color-brand);
 }
 
 h1, .h1,
@@ -18,17 +21,22 @@ h6, .h6 {
 }
 
 h1, .h1 {
-  font-size: 36px;
+  font-size: 3.6rem;
   line-height: 1.5;
 }
 
 h2, .h2 {
-  font-size: 24px;
+  font-size: 2.4rem;
   line-height: 1.2;
 }
 
 h3, .h3 {
-  font-size: 16px;
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
+span, select {
+  font-size: 1.6rem;
   line-height: 1.35;
 }
 
@@ -39,12 +47,14 @@ p {
 li {
   list-style-type: none;
 }
-.visually-hidden {
-  display: none;
-}
 
 img {
   padding: 0;
+}
+
+button {
+  font-size: 1.6rem;
+  line-height: 1.35;
 }
 
 .button {
@@ -52,12 +62,9 @@ img {
   border: none;
   cursor: pointer;
   border-radius: 4px;
-  background-color: $color-cornflowerblue;
-  color: $color-white;
+  background-color: var(--color-brand);
+  color: var(--color-light);
   transition-duration: 0.2s;
-
-
-  @include font($size: 1.6rem, $height: normal, $weight: 400)
 }
 
 .button:hover {
@@ -71,23 +78,20 @@ img {
   height: 48px;
   width: 100%;
   border-radius: 4px;
-  border: 2px solid $color-lightskyblue;
-
-  @include font($size: 2rem, $height: normal, $weight: 400)
+  border: 2px solid var(--color-brand-light);
+  font-size: 2rem;
 }
 
 
 .input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px $color-lightskyblue;
+  box-shadow: 0 0 0 3px var(--color-brand-light);
 }
 
 .select {
   height: 48px;
   width: 50%;
   border-radius: 4px;
-  border: 2px solid $color-lightskyblue;
-
-  @include font($size: 1.6rem, $height: normal, $weight: 400)
+  border: 2px solid var(--color-brand-light);
 }
 
